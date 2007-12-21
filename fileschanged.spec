@@ -16,6 +16,7 @@ Requires: gamin
 Buildrequires: libgamin-devel
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
+BuildRoot: %{_tmppath}/%{name}-buildroot
 
 
 %description

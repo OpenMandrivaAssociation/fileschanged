@@ -1,6 +1,6 @@
 %define name fileschanged
 %define version 0.6.5
-%define release %mkrel 4
+%define release %mkrel 5
 
 Summary: Reports when files have been altered
 Name: %{name}

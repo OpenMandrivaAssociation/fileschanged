@@ -29,7 +29,7 @@ it displays the filename on the standard-output.
 %prep
 %setup -q
 %patch0
-install %SOURCE1 $RPM_BUILD_DIR/%{name}-%{version}/man
+install %SOURCE1 %{_builddir}/%{name}-%{version}/man
 
 %build
 %configure

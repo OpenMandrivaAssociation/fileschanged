@@ -1,23 +1,20 @@
 %define name fileschanged
 %define version 0.6.5
-%define release  6
+%define release %mkrel 4
 
-Summary: Reports when files have been altered
-Name: %{name}
-Version: %{version}
-Release: %{release}
-License: GPL
-Group: File tools
-URL: http://fileschanged.sourceforge.net
-Source: http://mesh.dl.sourceforge.net/sourceforge/fileschanged/%{name}-%{version}.tar.bz2
-Source1: help2man
-Patch0:	 fileschanged-help2man.patch
-Requires: gamin 
-Buildrequires: libgamin-devel
-Requires(post): rpm-helper
-Requires(preun): rpm-helper
-BuildRoot: %{_tmppath}/%{name}-buildroot
-
+Summary:	Reports when files have been altered
+Name:		fileschanged
+Version:	0.6.5
+Release:	5
+License:	GPLv2+
+Group:		File tools
+Url:		http://fileschanged.sourceforge.net
+Source0:	http://mesh.dl.sourceforge.net/sourceforge/fileschanged/%{name}-%{version}.tar.bz2
+Source1:	help2man
+BuildRequires:	help2man
+BuildRequires:	pkgconfig(gamin)
+BuildRequires:	help2man
+Requires:	gamin
 
 %description
 This software is a client to the FAM (File Alteration Monitor) server.
@@ -26,33 +23,26 @@ you give it some filenames on the command line, it monitors those for changes.
 When it discovers that a file has changed (or has been altered),
 it displays the filename on the standard-output.
 
-%prep
-%setup -q
-%patch0
-install %SOURCE1 %{_builddir}/%{name}-%{version}/man
-
-%build
-%configure
-make
-
-%install
-rm -rf $RPM_BUILD_ROOT
-%makeinstall
-rm -f $RPM_BUILD_ROOT%{_datadir}/%{name}/NEWS
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-
-
-%files
-%defattr(-,root,root)
+%files -f %{name}.lang
 %doc README
 %{_bindir}/fileschanged
 %{_datadir}/fileschanged
 %{_mandir}/man1/*
 %{_datadir}/info/*
-%{_datadir}/locale/ca/LC_MESSAGES/fileschanged.mo
-%{_datadir}/locale/es/LC_MESSAGES/fileschanged.mo
 
+#----------------------------------------------------------------------------
 
+%prep
+%setup -q
+install %{SOURCE1} man/
+
+%build
+sed -i 's/-Werror//' src/Makefile.*
+%configure2_5x
+make
+
+%install
+%makeinstall_std
+rm -f %{buildroot}%{_datadir}/%{name}/NEWS
+
+%find_lang %{name}

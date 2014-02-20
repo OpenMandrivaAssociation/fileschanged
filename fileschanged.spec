@@ -1,7 +1,3 @@
-%define name fileschanged
-%define version 0.6.5
-%define release %mkrel 4
-
 Summary:	Reports when files have been altered
 Name:		fileschanged
 Version:	0.6.5
@@ -10,10 +6,8 @@ License:	GPLv2+
 Group:		File tools
 Url:		http://fileschanged.sourceforge.net
 Source0:	http://mesh.dl.sourceforge.net/sourceforge/fileschanged/%{name}-%{version}.tar.bz2
-Source1:	help2man
 BuildRequires:	help2man
 BuildRequires:	pkgconfig(gamin)
-BuildRequires:	help2man
 Requires:	gamin
 
 %description
@@ -34,7 +28,6 @@ it displays the filename on the standard-output.
 
 %prep
 %setup -q
-install %{SOURCE1} man/
 
 %build
 sed -i 's/-Werror//' src/Makefile.*

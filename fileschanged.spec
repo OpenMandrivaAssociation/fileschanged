@@ -1,7 +1,7 @@
 Summary:	Reports when files have been altered
 Name:		fileschanged
 Version:	0.6.5
-Release:	5
+Release:	6
 License:	GPLv2+
 Group:		File tools
 Url:		http://fileschanged.sourceforge.net

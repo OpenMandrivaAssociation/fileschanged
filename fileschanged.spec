@@ -4,7 +4,7 @@ Version:	0.6.5
 Release:	6
 License:	GPLv2+
 Group:		File tools
-Url:		http://fileschanged.sourceforge.net
+Url:		https://fileschanged.sourceforge.net
 Source0:	http://mesh.dl.sourceforge.net/sourceforge/fileschanged/%{name}-%{version}.tar.bz2
 BuildRequires:	help2man
 BuildRequires:	pkgconfig(gamin)

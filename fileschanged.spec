@@ -6,6 +6,11 @@ License:	GPLv2+
 Group:		File tools
 Url:		https://fileschanged.sourceforge.net
 Source0:	http://mesh.dl.sourceforge.net/sourceforge/fileschanged/%{name}-%{version}.tar.bz2
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	help2man
 BuildRequires:	pkgconfig(gamin)
 Requires:	gamin
